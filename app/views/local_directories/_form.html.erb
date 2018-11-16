@@ -1,0 +1,22 @@
+<%= form_with(model: local_directory, local: true) do |form| %>
+  <% if local_directory.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(local_directory.errors.count, "error") %> prohibited this local_directory from being saved:</h2>
+
+      <ul>
+      <% local_directory.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :path %>
+    <%= form.text_field :path, id: :local_directory_path %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
