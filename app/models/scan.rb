@@ -15,5 +15,7 @@ class Scan < ApplicationRecord
     4 => []
   }.freeze
 
+  has_many :local_directories
+
   validates :status, inclusion: { in: STATUS.keys }
 end

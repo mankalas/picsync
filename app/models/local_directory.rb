@@ -1,4 +1,6 @@
 class LocalDirectory < ApplicationRecord
+  belongs_to :scan, required: false
+
   validates :path, presence: true
   validate :path_must_exist
 

@@ -10,15 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181118232752) do
+ActiveRecord::Schema.define(version: 20181118233755) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "local_directories", force: :cascade do |t|
-    t.string "path", null: false
+    t.string "path"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "scan_id"
   end
 
   create_table "scans", force: :cascade do |t|
