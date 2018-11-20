@@ -7,4 +7,10 @@ class LocalDirectory < ApplicationRecord
   def path_must_exist
     errors.add(:path, "doesn't exist") if path && !Dir.exist?(path)
   end
+
+  def scan
+    Dir.foreach(path) do |f|
+      puts f
+    end
+  end
 end

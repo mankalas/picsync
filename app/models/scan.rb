@@ -27,4 +27,10 @@ class Scan < ApplicationRecord
   end
 
   has_many :local_directories
+
+  def run_scan
+    LocalDirectory.all.each do |d|
+      d.scan
+    end
+  end
 end
