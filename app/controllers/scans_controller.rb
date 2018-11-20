@@ -24,7 +24,7 @@ class ScansController < ApplicationController
   # POST /scans
   # POST /scans.json
   def create
-    @scan = Scan.new(scan_params)
+    @scan = Scan.new
 
     respond_to do |format|
       if @scan.save

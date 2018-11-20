@@ -13,7 +13,7 @@
   <tbody>
     <% @scans.each do |scan| %>
       <tr>
-        <td><%= scan.status %></td>
+        <td><%= scan.aasm_state %></td>
         <td><%= link_to 'Show', scan %></td>
         <td><%= link_to 'Edit', edit_scan_path(scan) %></td>
         <td><%= link_to 'Destroy', scan, method: :delete, data: { confirm: 'Are you sure?' } %></td>

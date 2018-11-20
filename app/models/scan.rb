@@ -1,21 +1,30 @@
 class Scan < ApplicationRecord
-  STATUS = {
-    0 => :scheduled,
-    1 => :in_progress,
-    2 => :successful,
-    3 => :in_error,
-    4 => :interrupted
-  }.freeze
+  include AASM
 
-  TRANSITIONS = {
-    0 => [1, 3],
-    1 => [2, 3, 4],
-    2 => [],
-    3 => [],
-    4 => []
-  }.freeze
+  aasm no_direct_assignment: true do
+    state :pending, initial: true
+    state :in_progress, :successful, :in_error, :interrupted
+
+    event :run do
+      transitions from: :pending, to: %i[in_progress in_error]
+    end
+
+    event :succeed do
+      transitions from: :in_progress, to: :successful
+    end
+
+    event :fail do
+      transitions from: :in_progress, to: :in_error
+    end
+
+    event :interrupt do
+      transitions from: :in_progress, to: :interrupted
+    end
+
+    event :resume do
+      transitions from: :interrupted, to: :in_progress
+    end
+  end
 
   has_many :local_directories
-
-  validates :status, inclusion: { in: STATUS.keys }
 end
