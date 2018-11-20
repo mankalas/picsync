@@ -1,0 +1,47 @@
+<%= form_with(model: local_file, local: true) do |form| %>
+  <% if local_file.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(local_file.errors.count, "error") %> prohibited this local_file from being saved:</h2>
+
+      <ul>
+      <% local_file.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :local_file_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :path %>
+    <%= form.text_field :path, id: :local_file_path %>
+  </div>
+
+  <div class="field">
+    <%= form.label :type %>
+    <%= form.text_field :type, id: :local_file_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :size %>
+    <%= form.text_field :size, id: :local_file_size %>
+  </div>
+
+  <div class="field">
+    <%= form.label :md5 %>
+    <%= form.text_field :md5, id: :local_file_md5 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :extension %>
+    <%= form.text_field :extension, id: :local_file_extension %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Local Files</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Path</th>
+      <th>Kind</th>
+      <th>Size</th>
+      <th>Md5</th>
+      <th>Extension</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @local_files.each do |local_file| %>
+      <tr>
+        <td><%= local_file.name %></td>
+        <td><%= local_file.path %></td>
+        <td><%= local_file.kind %></td>
+        <td><%= local_file.size %></td>
+        <td><%= local_file.md5 %></td>
+        <td><%= local_file.extension %></td>
+        <td><%= link_to 'Show', local_file %></td>
+        <td><%= link_to 'Edit', edit_local_file_path(local_file) %></td>
+        <td><%= link_to 'Destroy', local_file, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Local File', new_local_file_path %>
