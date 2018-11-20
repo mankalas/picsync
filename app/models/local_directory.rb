@@ -10,7 +10,7 @@ class LocalDirectory < ApplicationRecord
 
   def scan
     Dir.foreach(path) do |f|
-      puts f
+      LocalFile.from!(File.join(path, f))
     end
   end
 end
