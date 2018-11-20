@@ -29,6 +29,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 # For finite state machines
 gem 'aasm'
+gem 'exiftool'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

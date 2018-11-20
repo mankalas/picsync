@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181120042257) do
+ActiveRecord::Schema.define(version: 20181120094223) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,14 +23,23 @@ ActiveRecord::Schema.define(version: 20181120042257) do
   end
 
   create_table "local_files", force: :cascade do |t|
+    t.string "source"
     t.string "name"
-    t.string "path"
+    t.string "directory"
     t.string "kind"
     t.string "size"
     t.string "md5"
     t.string "extension"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.time "creation_time"
+    t.integer "height"
+    t.integer "width"
+    t.string "description"
+    t.integer "orientation"
+    t.string "model"
+    t.string "file_type"
+    t.string "mime_type"
   end
 
   create_table "scans", force: :cascade do |t|
