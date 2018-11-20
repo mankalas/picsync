@@ -6,6 +6,8 @@ require 'exiftool'
 class LocalFile < ApplicationRecord
   ELIGIBLE_EXTENSIONS = %w[jpg jpeg png bmp tiff].freeze
 
+  validates_uniqueness_of :source
+
   def self.from!(file_name)
     return if File.directory?(file_name)
 
