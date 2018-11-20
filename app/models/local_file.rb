@@ -7,6 +7,8 @@ class LocalFile < ApplicationRecord
   ELIGIBLE_EXTENSIONS = %w[jpg jpeg png bmp tiff].freeze
 
   def self.from!(file_name)
+    return if File.directory?(file_name)
+
     extension = File.extname(file_name)[1..-1]
     return unless ELIGIBLE_EXTENSIONS.include?(extension)
 

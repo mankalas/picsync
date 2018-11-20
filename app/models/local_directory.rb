@@ -1,3 +1,5 @@
+require 'find'
+
 class LocalDirectory < ApplicationRecord
   belongs_to :scan, required: false
 
@@ -9,8 +11,8 @@ class LocalDirectory < ApplicationRecord
   end
 
   def scan
-    Dir.foreach(path) do |f|
-      LocalFile.from!(File.join(path, f))
+    Find.find(path) do |f|
+      LocalFile.from!(f)
     end
   end
 end
