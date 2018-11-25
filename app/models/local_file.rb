@@ -20,7 +20,7 @@ class LocalFile < ApplicationRecord
             directory: exif_data[:directory],
             kind: "multimedia",
             size: File.size(file_name),
-            md5: Digest::MD5.hexdigest(File.read(file_name)),
+#            md5: Digest::MD5.hexdigest(File.read(file_name)),
             extension: extension,
             creation_time: exif_data[:date_time],
             height: exif_data[:image_height],
